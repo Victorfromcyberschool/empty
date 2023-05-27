@@ -1,0 +1,4 @@
+django==3.2.16
+Pillow==9.3.0
+pytils==0.4.1
+sorl-thumbnail>=11.12

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="cart__items">
+    {% for item in cart_items %}
+        <div class="cart-item">
+            <div class="cart-item__name">{{ cart_item.product.name }}</div>
+            <div 
+            class="cart-item__remove"
+            data-id="{{ cart_item.id }}"
+            data-url="{% url 'cart:delete_from_cart' %}"
+            >&times;</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

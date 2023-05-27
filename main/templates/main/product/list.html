@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}{{ category.name }}{% endblock %}
+{% block content %}
+    <h1 class="page-title">{{ category.name }}</h1>
+    <div class="products">
+        {% for product in products %}
+            <a class="products__item product" href="{% url 'main:product-detail' slug=product.slug %}">
+                {% if product.discount_percent > 0 %}
+                    <div class="product__discount">
+                        -{{ product.discount_percent }}%
+                    </div>
+                {% endif %}
+                <div class="product__img-wrapper">
+                    <img
+                            class="product__img"
+                            src="{{ product.product_images.all.0.image.url }}"
+                            alt="{{ product.name }}"
+                    >
+                </div>
+                <div class="product__name">
+                    {{ product.name }}
+                </div>
+                <div class="product__price">
+                    {{ product.price|price }}
+                </div>
+                <button data-id="{{ product.id }}" data-url="{% url 'cart:add_to_cart' %}" class="product__add">
+                    В корзину
+                </button>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

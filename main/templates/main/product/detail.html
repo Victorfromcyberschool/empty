@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+{% block content %}
+    <h1 class="page-title">{{ product.name }}</h1>
+    <div class="product-detail">
+        <div class="product-detail__gallery gallery">
+            <div class="gallery__item gallery__item_current">
+                <img 
+                src="{{ product.product_images.first.image.url }}" 
+                alt="{{ product.name }}" 
+                class="gallery__img"
+                >
+            </div>
+            <div class="gallery__previews">
+                {% for img in product.product_images.all %}
+                <div 
+                class="gallery__preview {% if forloop.counter == 1 %}gallery__preview_active{% endif %}"
+                >
+                <img 
+                src="{{ img.image.url }}" 
+                alt="{{ product.name }}" 
+                class="gallery__img"
+                >
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="product-detail__info">
+            <div class="product-detail__description">
+                Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Своих над грустный безорфографичный. Обеспечивает жизни переписывается за безорфографичный журчит проектах повстречался использовало пунктуация. Родного.
+            </div>
+            <div class="product-detail__price">
+                {{ product.price|price }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

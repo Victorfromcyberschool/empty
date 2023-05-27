@@ -1,0 +1,16 @@
+ls
+ls [-a] //для отобр-я скрытых файлов
+
+mkdir dir_name //для созд-я директории
+touch path_to_file.ext //для созд-я файла
+rm path_to_file/file_name.ext // для удаления файла
+rm -rf dir_name //для удаления папки
+cd path_to_dir//переход между директориями
+cd ..//переход на уровень выше
+
+команды django
+python manage.py command_name
+startapp app_name//создание приложение
+makemigrations//создание миграций
+migrate//применение миграций
+runserver//запуск локального сервера

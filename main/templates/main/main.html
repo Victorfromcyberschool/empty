@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Главная страница - Интернет магазин{% endblock %}
+{% block content %}
+    <div class="block">
+        <div class="block__title">Категории</div>
+        <div class="categories">
+            {% for category in categories %}
+                <a class="categories__item category" href="{% url 'main:category_products' category_id=category.pk %}">
+                    <div class="category__img-wrapper">
+                        <img class="category__img" src="{{ category.image.url }}" alt="{{ category.name }}">
+                    </div>
+                    <div class="category__name">
+                        {{ category.name }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
